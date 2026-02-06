@@ -11,6 +11,14 @@ npm create vite@latest my-app -- --template react-ts
 npm install react-router-dom
 ```
 2. 独立路由文件：src/routes.tsx
+3. 支持自动引入各个模块的路由文件，src/modules/**/routes.tsx
+```tsx
+// 自动收集 modules 下所有的 routes.tsx
+const routeModules = import.meta.glob<{ default: RouteObject[] }>(
+  '@/modules/**/routes.tsx',
+  { eager: true }
+)
+```
 
 ### 配置路径别名
 1. tsconfig.app.json
